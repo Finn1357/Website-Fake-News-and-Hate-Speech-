@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Glossar – Aufklärung</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #ffffff;
+      --bg-secondary: #f5f7ff;
+      --text-primary: #333;
+      --text-secondary: #666;
+      --accent: #667eea;
+      --accent-dark: #764ba2;
+    }
+    
+    html.dark-mode {
+      --bg-primary: #1a1a1a;
+      --bg-secondary: #2a2a3e;
+      --text-primary: #e0e0e0;
+      --text-secondary: #b0b0b0;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; color: var(--text-primary); background: var(--bg-primary); line-height: 1.6; transition: background 0.3s, color 0.3s; }
+    
+    header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    .header-left { display: flex; gap: 40px; align-items: center; }
+    .logo { font-size: 1.5em; font-weight: 700; }
+    
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+    
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      transition: opacity 0.3s;
+    }
+    
+    nav a:hover { opacity: 0.8; }
+
+    .theme-toggle {
+      background: rgba(255,255,255,0.2);
+      border: none;
+      color: white;
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1.2em;
+      transition: background 0.3s;
+    }
+
+    .theme-toggle:hover { background: rgba(255,255,255,0.3); }
+    
+    .content {
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 0 40px;
+    }
+    
+    h1 {
+      color: var(--accent);
+      font-size: 2.5em;
+      margin-bottom: 30px;
+    }
+
+    .search-box {
+      margin-bottom: 40px;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 14px 16px;
+      border: 2px solid var(--accent);
+      border-radius: 8px;
+      font-size: 1em;
+      background: var(--bg-secondary);
+      color: var(--text-primary);
+      transition: border-color 0.3s;
+    }
+
+    .search-box input:focus {
+      outline: none;
+      border-color: var(--accent-dark);
+    }
+
+    .glossary-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .term {
+      background: var(--bg-secondary);
+      padding: 20px;
+      border-radius: 10px;
+      border-left: 4px solid var(--accent);
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .term:hover {
+      transform: translateX(5px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .term-title {
+      font-weight: 700;
+      color: var(--accent);
+      font-size: 1.15em;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .term-title .toggle-icon {
+      font-size: 1.2em;
+      color: var(--accent);
+    }
+
+    .term-definition {
+      display: none;
+      margin-top: 12px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    .term.active .term-definition {
+      display: block;
+    }
+
+    .back {
+      display: inline-block;
+      margin-top: 40px;
+      padding: 12px 24px;
+      background: var(--accent);
+      color: white;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+
+    .back:hover { background: var(--accent-dark); }
+
+    footer {
+      background: var(--bg-secondary);
+      color: var(--text-secondary);
+      text-align: center;
+      padding: 30px 40px;
+      margin-top: 60px;
+    }
+
+    @media (max-width: 768px) {
+      header { flex-direction: column; gap: 15px; }
+      .header-left { flex-direction: column; gap: 15px; width: 100%; }
+      nav ul { flex-direction: column; gap: 10px; }
+      .content { padding: 0 20px; margin: 40px auto; }
+      h1 { font-size: 1.8em; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-left">
+      <div class="logo">🛡️ Aufklärung</div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Start</a></li>
+          <li><a href="about.html">Über uns</a></li>
+          <li><a href="glossary.html">Glossar</a></li>
+          <li><a href="contact.html">Kontakt</a></li>
+        </ul>
+      </nav>
+    </div>
+    <button class="theme-toggle" id="theme-toggle" title="Dark/Light Mode">🌙</button>
+  </header>
+
+  <main class="content">
+    <h1>📚 Glossar</h1>
+    <p style="color: var(--text-secondary); margin-bottom: 20px;">
+      Fachbegriffe rund um Desinformation, Medienkompetenz und Online-Sicherheit – einfach erklärt.
+    </p>
+
+    <div class="search-box">
+      <input type="text" id="search-input" placeholder="🔍 Begriffe durchsuchen...">
+    </div>
+
+    <div class="glossary-list" id="glossary-list">
+      <!-- Terms werden per JavaScript eingefügt -->
+    </div>
+
+    <a class="back" href="index.html">← Zurück zur Hauptseite</a>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Aufklärung – Glossar</p>
+  </footer>
+
+  <script>
+    const terms = [
+      {
+        title: "Fake News",
+        definition: "Bewusst verbreitete Falschmeldungen oder Desinformation, die als echte Nachrichten ausgegeben werden, um zu täuschen oder zu manipulieren."
+      },
+      {
+        title: "Desinformation",
+        definition: "Absichtlich verbreitete falsche Informationen mit der Absicht, zu täuschen oder Schaden anzurichten. Unterschied zu Misinformation: Misinformation ist unbeabsichtigt falsch."
+      },
+      {
+        title: "Hate Speech",
+        definition: "Hassrede oder Hassinhalte: Äußerungen, die Personen oder Gruppen aufgrund von Merkmalen wie Herkunft, Religion, Geschlecht oder Behinderung herabwürdigen oder bedrohen."
+      },
+      {
+        title: "Deepfake",
+        definition: "Manipulierte Audio- oder Videoinhalte, bei denen mithilfe von KI das Gesicht oder die Stimme einer Person durch eine andere ersetzt wird. Schwer zu erkennen und können für Desinformation missbraucht werden."
+      },
+      {
+        title: "Faktenchecking",
+        definition: "Systematische Überprüfung von Aussagen und Behauptungen auf ihre Richtigkeit. Professionelle Faktenchecks werden von unabhängigen Medienorganisationen durchgeführt."
+      },
+      {
+        title: "Medienmanipulation",
+        definition: "Gezielte Beeinflussung von Medieninhalten, um öffentliche Meinung zu formen oder zu verzerren – oft durch Auswahl, Kontextentzug oder Falschmeldungen."
+      },
+      {
+        title: "Medienkompetenz",
+        definition: "Fähigkeit, Medieninhalte kritisch zu bewerten, zu verstehen und zu nutzen. Umfasst das Erkennen von Manipulation, Quellenprüfung und verantwortungsvoller Umgang."
+      },
+      {
+        title: "Filterblase",
+        definition: "Algorithmen in sozialen Netzwerken zeigen dir Inhalte, die deinen Ansichten ähneln. Dies führt dazu, dass du in einer ‚Blase' steckenbleibst und Gegenmeinungen kaum siehst."
+      },
+      {
+        title: "Viral",
+        definition: "Inhalte, die sich extrem schnell und exponentiell in sozialen Netzwerken verbreiten, ähnlich wie die Ausbreitung eines Virus. Oft sind dies emotional aufgeladene oder reißerische Inhalte."
+      },
+      {
+        title: "Quellenprüfung",
+        definition: "Überprüfung der Glaubwürdigkeit und Vertrauenswürdigkeit einer Informationsquelle – wichtig bei der Faktenüberprüfung und zum Erkennen von Fake News."
+      },
+      {
+        title: "Cybergrooming",
+        definition: "Versuch eines Erwachsenen, sich einer minderjährigen Person online zu nähern, um sie auszubeuten oder zu missbrauchen. Ein ernstes Online-Sicherheitsrisiko."
+      },
+      {
+        title: "Trolling",
+        definition: "Absichtliches Verfassen von provozierenden oder beleidigenden Beiträgen, um andere zu reizen oder zu ärgern. Unterschied zu konstruktiver Kritik: Trolling zielt nur auf Provokation ab."
+      },
+      {
+        title: "Misinformation",
+        definition: "Falsche Informationen, die unbeabsichtigt verbreitet werden – meist, weil der Verbreiter nicht weiß, dass sie falsch sind. Unterschied zu Desinformation: nicht absichtlich."
+      },
+      {
+        title: "Manipulatives Marketing",
+        definition: "Einsatz psychologischer Techniken in der Werbung, um Menschen zu täuschen oder unbewusst zu beeinflussen – oft durch reißerische Titel, falsche Versprechungen oder emotionale Manipulation."
+      },
+      {
+        title: "Quellenangabe",
+        definition: "Angabe der Herkunft von Informationen (Autor, Datum, Medium). Seriöse Medien nennen immer ihre Quellen, um Transparenz und Glaubwürdigkeit zu zeigen."
+      },
+      {
+        title: "Online-Mob",
+        definition: "Gruppe von Menschen im Internet, die koordiniert gegen eine Person vorgehen – durch Belästigung, Beleidigungen oder Verdrehung von Fakten. Ein Phänomen des Cybermobbing."
+      },
+      {
+        title: "Shitstorm",
+        definition: "Massive negative Reaktion einer großen Menge von Menschen im Internet gegen eine Person, Organisation oder Aussage – oft mit aggressiven Kommentaren und Beleidigungen."
+      },
+      {
+        title: "Rückwärtsbildsuche",
+        definition: "Technik, um die Herkunft eines Fotos zu prüfen – durch Hochladen ins Google Images oder TinEye. Zeigt, wo das Bild zuerst auftauchte und ob es manipuliert wurde."
+      },
+      {
+        title: "Redaktionelle Standards",
+        definition: "Richtlinien, die seriöse Redaktionen befolgen – wie Überprüfung von Fakten, Nennung von Quellen, Trennung von Meinung und Nachricht. Wichtig für glaubwürdige Berichterstattung."
+      },
+      {
+        title: "Dezinformation",
+        definition: "Alias für Desinformation – absichtlich verbreitete falsche Informationen zur Manipulation oder zum Täuschen."
+      }
+    ];
+
+    const glossaryList = document.getElementById('glossary-list');
+    const searchInput = document.getElementById('search-input');
+    const themeToggle = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+
+    // Dark Mode
+    if (localStorage.getItem('theme') === 'dark') {
+      html.classList.add('dark-mode');
+      themeToggle.textContent = '☀️';
+    }
+
+    themeToggle.addEventListener('click', () => {
+      html.classList.toggle('dark-mode');
+      if (html.classList.contains('dark-mode')) {
+        localStorage.setItem('theme', 'dark');
+        themeToggle.textContent = '☀️';
+      } else {
+        localStorage.setItem('theme', 'light');
+        themeToggle.textContent = '🌙';
+      }
+    });
+
+    // Render terms
+    function renderTerms(filter = '') {
+      glossaryList.innerHTML = '';
+      const filtered = terms.filter(t => t.title.toLowerCase().includes(filter.toLowerCase()) || t.definition.toLowerCase().includes(filter.toLowerCase()));
+      
+      filtered.forEach((term, index) => {
+        const termDiv = document.createElement('div');
+        termDiv.className = 'term';
+        termDiv.innerHTML = `
+          <div class="term-title">
+            <span>${term.title}</span>
+            <span class="toggle-icon">▶</span>
+          </div>
+          <div class="term-definition">${term.definition}</div>
+        `;
+        termDiv.addEventListener('click', () => termDiv.classList.toggle('active'));
+        glossaryList.appendChild(termDiv);
+      });
+    }
+
+    renderTerms();
+
+    // Search
+    searchInput.addEventListener('input', (e) => {
+      renderTerms(e.target.value);
+    });
+  </script>
+</body>
+</html>

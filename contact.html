@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kontakt – Aufklärung</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #ffffff;
+      --bg-secondary: #f5f7ff;
+      --text-primary: #333;
+      --text-secondary: #666;
+      --accent: #667eea;
+      --accent-dark: #764ba2;
+    }
+    
+    html.dark-mode {
+      --bg-primary: #1a1a1a;
+      --bg-secondary: #2a2a3e;
+      --text-primary: #e0e0e0;
+      --text-secondary: #b0b0b0;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      font-family: 'Inter', sans-serif; 
+      color: var(--text-primary); 
+      background: var(--bg-primary); 
+      line-height: 1.6;
+      transition: background 0.3s, color 0.3s;
+    }
+    
+    header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    .header-left { display: flex; gap: 40px; align-items: center; }
+    .logo { font-size: 1.5em; font-weight: 700; }
+    
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+    
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      transition: opacity 0.3s;
+    }
+    
+    nav a:hover { opacity: 0.8; }
+
+    .theme-toggle {
+      background: rgba(255,255,255,0.2);
+      border: none;
+      color: white;
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1.2em;
+      transition: background 0.3s;
+    }
+
+    .theme-toggle:hover { background: rgba(255,255,255,0.3); }
+    
+    .content {
+      max-width: 700px;
+      margin: 60px auto;
+      padding: 0 40px;
+    }
+    
+    h1 {
+      color: var(--accent);
+      font-size: 2.5em;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    p {
+      color: var(--text-secondary);
+      margin-bottom: 30px;
+      text-align: center;
+      font-size: 1.05em;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 2px solid var(--accent);
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 1em;
+      background: var(--bg-secondary);
+      color: var(--text-primary);
+      transition: border-color 0.3s;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--accent-dark);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 150px;
+    }
+
+    .submit-btn {
+      background: var(--accent);
+      color: white;
+      padding: 14px 30px;
+      border: none;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+      width: 100%;
+    }
+
+    .submit-btn:hover {
+      background: var(--accent-dark);
+      transform: translateY(-2px);
+    }
+
+    .back {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 12px 24px;
+      background: var(--accent);
+      color: white;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+
+    .back:hover { background: var(--accent-dark); }
+
+    .contact-info {
+      background: var(--bg-secondary);
+      padding: 25px;
+      border-radius: 10px;
+      margin-top: 40px;
+      border-left: 4px solid var(--accent);
+    }
+
+    .contact-info h2 {
+      color: var(--accent);
+      margin-bottom: 15px;
+    }
+
+    .contact-info p {
+      text-align: left;
+      margin-bottom: 10px;
+      font-size: 1em;
+    }
+
+    footer {
+      background: var(--bg-secondary);
+      color: var(--text-secondary);
+      text-align: center;
+      padding: 30px 40px;
+      margin-top: 60px;
+    }
+
+    @media (max-width: 768px) {
+      header { flex-direction: column; gap: 15px; }
+      .header-left { flex-direction: column; gap: 15px; width: 100%; }
+      nav ul { flex-direction: column; gap: 10px; }
+      .content { padding: 0 20px; margin: 40px auto; }
+      h1 { font-size: 1.8em; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-left">
+      <div class="logo">🛡️ Aufklärung</div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Start</a></li>
+          <li><a href="about.html">Über uns</a></li>
+          <li><a href="glossary.html">Glossar</a></li>
+        </ul>
+      </nav>
+    </div>
+    <button class="theme-toggle" id="theme-toggle" title="Dark/Light Mode">🌙</button>
+  </header>
+
+  <main class="content">
+    <h1>📧 Kontakt</h1>
+    <p>Hast du Fragen, Feedback oder Verbesserungsvorschläge? Schreib uns gerne eine Nachricht!</p>
+
+    <form id="contact-form">
+      <div class="form-group">
+        <label for="name">Name *</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">E-Mail *</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="subject">Betreff *</label>
+        <input type="text" id="subject" name="subject" required>
+      </div>
+
+      <div class="form-group">
+        <label for="message">Nachricht *</label>
+        <textarea id="message" name="message" required></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn">Nachricht senden</button>
+    </form>
+
+    <div class="contact-info">
+      <h2>Direkter Kontakt</h2>
+      <p><strong>Email:</strong> ma.gless@web.de</p>
+      <p><strong>Snapchat:</strong> buchsi1501</p>
+      <p style="margin-top: 15px; font-size: 0.95em; color: var(--text-secondary);">
+        Wir versuchen, alle Nachrichten innerhalb von 48 Stunden zu beantworten. Danke für dein Interesse!
+      </p>
+    </div>
+
+    <a class="back" href="index.html">← Zurück zur Hauptseite</a>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Aufklärung – Kontakt</p>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+    
+    if (localStorage.getItem('theme') === 'dark') {
+      html.classList.add('dark-mode');
+      toggle.textContent = '☀️';
+    }
+    
+    toggle.addEventListener('click', () => {
+      html.classList.toggle('dark-mode');
+      if (html.classList.contains('dark-mode')) {
+        localStorage.setItem('theme', 'dark');
+        toggle.textContent = '☀️';
+      } else {
+        localStorage.setItem('theme', 'light');
+        toggle.textContent = '🌙';
+      }
+    });
+
+    // Einfache Formular-Validierung
+    document.getElementById('contact-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const subject = document.getElementById('subject').value;
+      const message = document.getElementById('message').value;
+      
+      if (name && email && subject && message) {
+        alert(`Danke ${name}! Deine Nachricht wurde notiert. In einer echten Anwendung würde sie jetzt versendet.\n\nEmail: ${email}\nBetreff: ${subject}`);
+        document.getElementById('contact-form').reset();
+      }
+    });
+  </script>
+</body>
+</html>

@@ -8,46 +8,135 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --bg-primary: #ffffff;
+      --bg-secondary: #f5f7ff;
+      --text-primary: #333;
+      --text-secondary: #666;
+      --accent: #667eea;
+    }
+    
+    html.dark-mode {
+      --bg-primary: #1a1a1a;
+      --bg-secondary: #2a2a3e;
+      --text-primary: #e0e0e0;
+      --text-secondary: #b0b0b0;
+    }
+
     * { margin:0; padding:0; box-sizing:border-box }
-    body { font-family:'Inter',sans-serif; color:#333; line-height:1.6 }
-    header{ background: linear-gradient(135deg,#667eea 0%,#764ba2 100%); color:#fff; padding:18px 28px; display:flex; justify-content:space-between; align-items:center; border-radius:6px; box-shadow:0 4px 12px rgba(0,0,0,0.08) }
+    body { 
+      font-family:'Inter',sans-serif; 
+      color: var(--text-primary); 
+      background: var(--bg-primary);
+      line-height:1.6;
+      transition: background 0.3s, color 0.3s;
+    }
+    header{ 
+      background: linear-gradient(135deg,#667eea 0%,#764ba2 100%); 
+      color:#fff; 
+      padding:18px 28px; 
+      display:flex; 
+      justify-content:space-between; 
+      align-items:center; 
+      border-radius:6px; 
+      box-shadow:0 4px 12px rgba(0,0,0,0.08);
+    }
+    .header-left { display: flex; gap: 20px; align-items: center; }
     .logo{ font-weight:700 }
     nav ul{ list-style:none; display:flex; gap:16px }
-    nav a{ color:white; text-decoration:none; font-weight:600 }
+    nav a{ color:white; text-decoration:none; font-weight:600; transition: opacity 0.3s; }
+    nav a:hover { opacity: 0.8; }
+
+    .theme-toggle {
+      background: rgba(255,255,255,0.2);
+      border: none;
+      color: white;
+      padding: 6px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1em;
+      transition: background 0.3s;
+    }
+
+    .theme-toggle:hover { background: rgba(255,255,255,0.3); }
+
     .content{ max-width:980px; margin:24px auto; padding:0 20px }
-  .hero{ background:#fff9f9; padding:22px; border-radius:8px; margin:20px 0 }
-  .hero-illustration { width:220px; height:140px; max-width:40%; display:block; margin-bottom:12px; border-radius:12px; background: linear-gradient(135deg,#ff6b6b,#ff94a0); color:white; display:flex; align-items:center; justify-content:center; font-size:48px }
-    .card{ background:white; padding:18px; border-radius:10px; box-shadow:0 6px 18px rgba(0,0,0,0.06); margin-bottom:16px }
+  .hero{ 
+    background: var(--bg-secondary); 
+    padding:22px; 
+    border-radius:8px; 
+    margin:20px 0;
+    border-left: 4px solid var(--accent);
+  }
+  .hero-illustration { 
+    width:220px; 
+    height:140px; 
+    max-width:40%; 
+    display:block; 
+    margin-bottom:12px; 
+    border-radius:12px; 
+    background: linear-gradient(135deg,#ff6b6b,#ff94a0); 
+    color:white; 
+    display:flex; 
+    align-items:center; 
+    justify-content:center; 
+    font-size:48px;
+  }
+    .card{ 
+      background: var(--bg-secondary); 
+      padding:18px; 
+      border-radius:10px; 
+      box-shadow:0 6px 18px rgba(0,0,0,0.06); 
+      margin-bottom:16px;
+      border-left: 4px solid var(--accent);
+    }
     .important{ color:#bf1650; font-weight:700 }
-    .back{ display:inline-block; margin-top:12px; padding:10px 14px; background:#667eea; color:white; text-decoration:none; border-radius:8px; font-weight:600 }
+    .back{ 
+      display:inline-block; 
+      margin-top:12px; 
+      padding:10px 14px; 
+      background: var(--accent); 
+      color:white; 
+      text-decoration:none; 
+      border-radius:8px; 
+      font-weight:600;
+      transition: background 0.3s;
+    }
+    .back:hover { background: #764ba2; }
+    footer { color: var(--text-secondary); }
   </style>
 </head>
 <body>
   <header>
-    <div class="logo">🛡️ Aufklärung</div>
-    <nav>
-      <ul>
-        <li><a href="Homepage.html">Start</a></li>
-        <li><a href="hate-speech.html">Hate Speech</a></li>
-        <li><a href="medienkompetenz.html">Medienkompetenz</a></li>
-      </ul>
-    </nav>
+    <div class="header-left">
+      <div class="logo">🛡️ Aufklärung</div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Start</a></li>
+          <li><a href="hate-speech.html">Hate Speech</a></li>
+          <li><a href="medienkompetenz.html">Medienkompetenz</a></li>
+          <li><a href="glossary.html">Glossar</a></li>
+          <li><a href="contact.html">Kontakt</a></li>
+        </ul>
+      </nav>
+    </div>
+    <button class="theme-toggle" id="theme-toggle">🌙</button>
   </header>
 
   <main class="content">
     <section class="hero">
       <div class="hero-illustration" aria-hidden="true">💬</div>
-      <h1 style="color:#222; font-size:1.6em;">Hassrede erkennen und sicher handeln</h1>
-      <p style="margin-top:6px; color:#444">Was du tun kannst, wenn du auf beleidigende oder bedrohliche Inhalte stößt — ohne dich selbst zu gefährden.</p>
+      <h1 style="color: var(--accent); font-size:1.6em;">Hassrede erkennen und sicher handeln</h1>
+      <p style="margin-top:6px; color: var(--text-secondary);">Was du tun kannst, wenn du auf beleidigende oder bedrohliche Inhalte stößt — ohne dich selbst zu gefährden.</p>
     </section>
 
     <section class="card">
-      <h2 style="color:#667eea; margin-bottom:8px">Was ist Hate Speech?</h2>
+      <h2 style="color: var(--accent); margin-bottom:8px">Was ist Hate Speech?</h2>
       <p>Hate Speech sind Äußerungen, die Personen oder Gruppen aufgrund von Merkmalen wie Herkunft, Religion, Geschlecht oder Behinderung herabwürdigen oder bedrohen. Nicht jede unschöne Aussage ist strafbar, aber sie kann sehr schädlich sein.</p>
     </section>
 
     <section class="card">
-      <h2 style="color:#667eea; margin-bottom:8px">Sicher melden — Schritt für Schritt</h2>
+      <h2 style="color: var(--accent); margin-bottom:8px">Sicher melden — Schritt für Schritt</h2>
       <ol style="margin-left:18px; margin-bottom:8px">
         <li>Belege sichern: Screenshot, Link, Datum und Uhrzeit notieren.</li>
         <li>Plattform melden: Nutze die Meldefunktion (Facebook, Instagram, TikTok, etc.).</li>
@@ -57,7 +146,7 @@
     </section>
 
     <section class="card">
-      <h2 style="color:#667eea; margin-bottom:8px">Wo du Hilfe findest</h2>
+      <h2 style="color: var(--accent); margin-bottom:8px">Wo du Hilfe findest</h2>
       <ul style="margin-left:18px">
         <li><strong>Beratungsstellen:</strong> Nummer gegen Kummer, lokale Opferberatungen.</li>
         <li><strong>Schule:</strong> Vertrauenslehrer*innen, Schulsozialarbeit.</li>
@@ -67,9 +156,30 @@
 
   <a class="back" href="index.html">← Zurück zur Hauptseite</a>
 
-    <footer style="margin-top:28px; text-align:center; color:#666; font-size:0.9em">
+    <footer style="margin-top:28px; text-align:center; color: var(--text-secondary); font-size:0.9em">
       &copy; 2025 Aufklärung — Hate Speech bekämpfen
     </footer>
   </main>
+
+  <script>
+    const toggle = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+    
+    if (localStorage.getItem('theme') === 'dark') {
+      html.classList.add('dark-mode');
+      toggle.textContent = '☀️';
+    }
+    
+    toggle.addEventListener('click', () => {
+      html.classList.toggle('dark-mode');
+      if (html.classList.contains('dark-mode')) {
+        localStorage.setItem('theme', 'dark');
+        toggle.textContent = '☀️';
+      } else {
+        localStorage.setItem('theme', 'light');
+        toggle.textContent = '🌙';
+      }
+    });
+  </script>
 </body>
 </html>

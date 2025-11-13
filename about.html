@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Über uns – Aufklärung</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #ffffff;
+      --bg-secondary: #f5f7ff;
+      --text-primary: #333;
+      --text-secondary: #666;
+      --accent: #667eea;
+      --accent-dark: #764ba2;
+    }
+    
+    html.dark-mode {
+      --bg-primary: #1a1a1a;
+      --bg-secondary: #2a2a3e;
+      --text-primary: #e0e0e0;
+      --text-secondary: #b0b0b0;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; color: var(--text-primary); background: var(--bg-primary); line-height: 1.6; transition: background 0.3s, color 0.3s; }
+    
+    header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    .header-left { display: flex; gap: 40px; align-items: center; }
+    .logo { font-size: 1.5em; font-weight: 700; }
+    
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+    
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      transition: opacity 0.3s;
+    }
+    
+    nav a:hover { opacity: 0.8; }
+
+    .theme-toggle {
+      background: rgba(255,255,255,0.2);
+      border: none;
+      color: white;
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1.2em;
+      transition: background 0.3s;
+    }
+
+    .theme-toggle:hover { background: rgba(255,255,255,0.3); }
+    
+    .content {
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 0 40px;
+    }
+    
+    h1 {
+      color: var(--accent);
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      color: var(--accent);
+      font-size: 1.8em;
+      margin-top: 40px;
+      margin-bottom: 20px;
+    }
+
+    p {
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+      font-size: 1.05em;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin: 30px 0;
+    }
+
+    .team-member {
+      background: var(--bg-secondary);
+      padding: 25px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      transition: transform 0.3s;
+    }
+
+    .team-member:hover { transform: translateY(-5px); }
+
+    .team-member .emoji {
+      font-size: 3em;
+      margin-bottom: 12px;
+    }
+
+    .team-member h3 {
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .team-member p {
+      font-size: 0.95em;
+      color: var(--text-secondary);
+    }
+
+    .card {
+      background: var(--bg-secondary);
+      padding: 25px;
+      border-radius: 10px;
+      margin: 20px 0;
+      border-left: 4px solid var(--accent);
+    }
+
+    .back {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 12px 24px;
+      background: var(--accent);
+      color: white;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+
+    .back:hover { background: var(--accent-dark); }
+
+    footer {
+      background: var(--bg-secondary);
+      color: var(--text-secondary);
+      text-align: center;
+      padding: 30px 40px;
+      margin-top: 60px;
+    }
+
+    @media (max-width: 768px) {
+      header { flex-direction: column; gap: 15px; }
+      .header-left { flex-direction: column; gap: 15px; width: 100%; }
+      nav ul { flex-direction: column; gap: 10px; }
+      .content { padding: 0 20px; margin: 40px auto; }
+      h1 { font-size: 1.8em; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-left">
+      <div class="logo">🛡️ Aufklärung</div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Start</a></li>
+          <li><a href="about.html">Über uns</a></li>
+          <li><a href="glossary.html">Glossar</a></li>
+          <li><a href="contact.html">Kontakt</a></li>
+        </ul>
+      </nav>
+    </div>
+    <button class="theme-toggle" id="theme-toggle" title="Dark/Light Mode">🌙</button>
+  </header>
+
+  <main class="content">
+    <h1>Über Aufklärung</h1>
+    <p style="font-size: 1.2em; color: var(--accent); margin-bottom: 30px;">
+      Drei Schüler. Ein Ziel. Eine bessere Online-Welt.
+    </p>
+
+    <h2>Wer wir sind</h2>
+    <p>
+      Wir sind drei Schüler des Anderen Gymnasiums Neubrandenburg und haben <strong>Aufklärung</strong> ins Leben gerufen, 
+      um gegen Desinformation, Fake News und Hate Speech im Internet vorzugehen. Unser Ziel ist es, junge Menschen zu befähigen, 
+      kritisch zu denken und verantwortungsvoll mit Medien umzugehen.
+    </p>
+
+    <div class="card">
+      <strong>💡 Unsere Mission:</strong> Wir wollen Medienkompetenz stärken und zeigen, wie jeder einzelne einen Unterschied 
+      im Kampf gegen Falschinformationen machen kann.
+    </div>
+
+    <h2>Das Team</h2>
+    <div class="team-grid">
+      <div class="team-member">
+        <div class="emoji">👨‍💻</div>
+        <h3>Team Aufklärung</h3>
+        <p>Leidenschaftlich. Kritisch. Engagiert.</p>
+        <p style="font-size: 0.9em; margin-top: 10px;">Schüler des Anderen Gymnasiums Neubrandenburg</p>
+      </div>
+      <div class="team-member">
+        <div class="emoji">🎯</div>
+        <h3>Unser Fokus</h3>
+        <p>Bildung durch Aufklärung und Aktion gegen Desinformation.</p>
+        <p style="font-size: 0.9em; margin-top: 10px;">Praktisches Wissen für den Alltag</p>
+      </div>
+      <div class="team-member">
+        <div class="emoji">🌍</div>
+        <h3>Unsere Vision</h3>
+        <p>Eine informierte Gesellschaft, die Fake News durchschaut.</p>
+        <p style="font-size: 0.9em; margin-top: 10px;">Digital literate und verantwortungsvoll</p>
+      </div>
+    </div>
+
+    <h2>Warum Aufklärung?</h2>
+    <p>
+      In einer Zeit, in der Desinformation rasend schnell verbreitet wird, ist Medienkompetenz wichtiger denn je. 
+      Studien zeigen, dass 89% der Internetnutzer täglich verdächtige Inhalte sehen. Viele wissen aber nicht, wie sie 
+      diese überprüfen können oder wie sie sicher mit Online-Missbrauch umgehen.
+    </p>
+    <p>
+      <strong>Aufklärung</strong> möchte diese Lücke schließen. Mit praktischen Tipps, interaktiven Quizzen und verlässlichen 
+      Ressourcen helfen wir dir, die digitale Welt sicherer zu navigieren.
+    </p>
+
+    <h2>Was wir anbieten</h2>
+    <div class="card">
+      <strong>📰 Fake News erkennen</strong>
+      <p style="margin-top: 10px;">Praktische Checklisten und Werkzeuge zur Überprüfung von Quellen.</p>
+    </div>
+    <div class="card">
+      <strong>💬 Hate Speech bekämpfen</strong>
+      <p style="margin-top: 10px;">Erkennen, melden und sicher handeln gegen Hassrede.</p>
+    </div>
+    <div class="card">
+      <strong>🔍 Faktenchecking</strong>
+      <p style="margin-top: 10px;">Methoden und Ressourcen für professionelle Faktenchecks.</p>
+    </div>
+    <div class="card">
+      <strong>🌐 Online-Sicherheit</strong>
+      <p style="margin-top: 10px;">Schutzmaßnahmen gegen Manipulation und Missbrauch.</p>
+    </div>
+
+    <h2>Kontakt & Feedback</h2>
+    <p>
+      Hast du Vorschläge, Fragen oder Feedback? Wir freuen uns, von dir zu hören!
+    </p>
+    <ul style="margin-left: 20px; margin-bottom: 20px;">
+      <li><strong>Email:</strong> ma.gless@web.de</li>
+      <li><strong>Snapchat:</strong> buchsi1501</li>
+    </ul>
+
+    <a class="back" href="index.html">← Zurück zur Hauptseite</a>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Aufklärung – Gemeinsam gegen Desinformation</p>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+    
+    // Prüfe gespeicherte Präferenz
+    if (localStorage.getItem('theme') === 'dark') {
+      html.classList.add('dark-mode');
+      toggle.textContent = '☀️';
+    }
+    
+    toggle.addEventListener('click', () => {
+      html.classList.toggle('dark-mode');
+      if (html.classList.contains('dark-mode')) {
+        localStorage.setItem('theme', 'dark');
+        toggle.textContent = '☀️';
+      } else {
+        localStorage.setItem('theme', 'light');
+        toggle.textContent = '🌙';
+      }
+    });
+  </script>
+</body>
+</html>
