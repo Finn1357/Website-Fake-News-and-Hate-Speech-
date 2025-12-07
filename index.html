@@ -123,7 +123,7 @@
     
     .content {
       max-width: 1200px;
-      margin: 80px auto;
+      margin: 100px auto;
       padding: 0 40px;
     }
     
@@ -137,9 +137,18 @@
     .cards {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
+      gap: 36px;
       margin-bottom: 80px;
     }
+
+    /* Consistent vertical spacing between main content blocks */
+    .content > * {
+      margin-top: 32px;
+      margin-bottom: 32px;
+    }
+
+    /* Slightly larger spacing for section titles */
+    .section-title { margin-top: 48px; margin-bottom: 36px; }
     
     .card {
       background: var(--bg-secondary);
@@ -162,9 +171,27 @@
     
     .card h3 {
       color: var(--accent);
-      margin-bottom: 15px;
+      margin-bottom: 12px;
       font-size: 1.5em;
     }
+
+    /* Hidden card body for 'Mehr lesen' */
+    .card-body { display: none; color: var(--text-primary); margin-top: 8px; line-height:1.45 }
+    .card.expanded .card-body { display: block; }
+    .read-more {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      background: transparent;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .read-more:hover { background: rgba(102,126,234,0.08); }
+    .card-actions { margin-top: 8px; display:flex; gap:12px; align-items:center }
+    .card-link-inline { color: var(--accent); text-decoration: none; font-weight:600 }
     
     .card-icon {
       font-size: 2.5em;
@@ -177,8 +204,11 @@
       padding: 24px;
       border-radius: 10px;
       box-shadow: 0 6px 20px rgba(0,0,0,0.06);
-      margin: 40px 0;
+      margin: 40px auto;
       border-left: 4px solid var(--accent);
+      max-width: 920px;
+      padding-left: 28px;
+      padding-right: 28px;
     }
     .quiz .question { margin: 12px 0; }
     .quiz .choices { margin-top:8px }
@@ -202,8 +232,11 @@
     padding:18px; 
     border-radius:10px; 
     box-shadow:0 6px 18px rgba(0,0,0,0.06); 
-    margin:20px 0;
+    margin:20px auto;
     border-left: 4px solid #ffc107;
+    max-width: 920px;
+    padding-left: 28px;
+    padding-right: 28px;
   }
   .tip-box .tip-text { font-size:1.05em; color: var(--text-primary); min-height:40px }
   .tip-box .tip-btn { margin-top:10px }
@@ -262,14 +295,16 @@
       nav ul { flex-direction: column; gap: 15px; }
       .hero h1 { font-size: 2em; }
       .section-title { font-size: 2em; }
-      .content { padding: 0 20px; }
+      .content { padding: 0 20px; margin: 60px auto; }
+      .content > * { margin-top: 20px; margin-bottom: 20px; }
+      .quiz, .tip-box { margin-left: 12px; margin-right: 12px; max-width: none; padding-left: 16px; padding-right: 16px; }
     }
   </style>
 </head>
 <body>
   <header>
     <div class="header-left">
-      <div class="logo">🛡️ Aufklärung</div>
+      <div class="logo"><span style="font-weight:700;">DWADS</span><br><small style="font-weight:600; color:rgba(255,255,255,0.9);">🔎Der Wahrheit auf der Spur🔍</small></div>
       <nav>
         <ul>
           <li><a href="#home">Start</a></li>
@@ -278,6 +313,8 @@
           <li><a href="about.html">Team</a></li>
           <li><a href="glossary.html">Glossar</a></li>
           <li><a href="contact.html">Kontakt</a></li>
+          <li><a href="unterstuetzung.html">Unterstützung</a></li>
+          <li><a href="impressum.html">Impressum</a></li>
         </ul>
       </nav>
     </div>
@@ -294,62 +331,73 @@
     
 
     <h2 class="section-title" id="about">Über uns</h2>
-    <p style="text-align: center; font-size: 1.1em; max-width: 800px; margin: 0 auto 40px; color: var(--text-secondary);">
-      Wir sind drei Schüler des Anderen Gymnasiums Neubrandenburg und setzen uns als Initiative für Aufklärung und den Kampf gegen falsche Informationen im Internet ein. Unser Ziel ist es, Menschen dabei zu unterstützen, Fake News zu erkennen und Hassrede zu melden.
+    <p style="text-align: center; font-size: 1.05em; max-width: 900px; margin: 0 auto 12px; color: var(--text-secondary);">
+      Dieses Projekt wurde von Schülerinnen und Schülern des Anderen Gymnasiums Neubrandenburg ins Leben gerufen. Gemeinsam wollen wir Verständnis für digitale Informationskompetenz schaffen, junge Menschen stärken und konkrete Werkzeuge an die Hand geben, um Fake News und Hate Speech sicherer zu erkennen und zu melden. 
+      Wir kombinieren Recherche, praktische Tipps und interaktive Übungen, damit du im Netz besser recherchieren, Quellen prüfen und kritisch hinterfragen kannst — für eine respektvolle und verantwortungsbewusste Online‑Kultur.
     </p>
-    <p style="text-align: center; max-width: 800px; margin: 0 auto 40px; color: var(--text-secondary);">
-      <a href="about.html" style="color: var(--accent); text-decoration: none; font-weight: 600;">→ Mehr über unser Team erfahren</a>
-    </p>
+
+    <!-- Team boxes -->
+    <div class="cards" style="max-width:800px; margin:20px auto 40px; grid-template-columns: repeat(3, 1fr);">
+      <div class="card" style="text-align:center;">
+        <div class="card-icon">👤</div>
+        <h3>Mailo</h3>
+        <p>15 Jahre</p>
+      </div>
+      <div class="card" style="text-align:center;">
+        <div class="card-icon">👤</div>
+        <h3>Ben</h3>
+        <p>16 Jahre</p>
+      </div>
+      <div class="card" style="text-align:center;">
+        <div class="card-icon">👤</div>
+        <h3>Paul</h3>
+        <p>16 Jahre</p>
+      </div>
+    </div>
 
     <h2 class="section-title" id="topics">Unsere Themen</h2>
     <div class="cards">
-      <a class="card-link" href="fake-news.html">
-        <div class="card">
-          <div class="card-icon">📰</div>
-          <h3>Fake News erkennen</h3>
-          <p>Lerne, wie du Desinformation erkennst und überprüfst. Wir zeigen dir praktische Tipps zur Quellenprüfung.</p>
+      <div class="card" id="card-fake-news">
+        <div class="card-icon">📰</div>
+        <h3>Fake News erkennen</h3>
+        <div class="card-body">
+          <p><strong>Was sind Fake News:</strong> Absichtlich falsche Nachrichten (Texte, Fotos, Videos). Sie zielen oft darauf ab, Hass zu erzeugen, Meinungen zu beeinflussen oder Klicks zu generieren.</p>
+          <p>Merkmale: emotional aufgeladen, hohe Aufmerksamkeit, seriöses Erscheinungsbild ("Experten", Logos). Sei skeptisch bei Zitaten oder Zahlen ohne Quellen.</p>
+          <p>Quellen prüfen: Website und Impressum prüfen, Kontext, Autor und Datum kontrollieren; Informationen mit anderen Quellen abgleichen; Rückwärtsbildsuche nutzen.</p>
         </div>
-      </a>
+        <div class="card-actions">
+          <button class="read-more" data-target="card-fake-news">Mehr lesen</button>
+          <a class="card-link-inline" href="fake-news.html">Zur Seite →</a>
+        </div>
+      </div>
 
-      <a class="card-link" href="hate-speech.html">
-        <div class="card">
-          <div class="card-icon">💬</div>
-          <h3>Hate Speech bekämpfen</h3>
-          <p>Verstehe, wie Hassinhalte entstehen und wie du sie erkennen und melden kannst.</p>
+      <div class="card" id="card-hate-speech">
+        <div class="card-icon">💬</div>
+        <h3>Hate Speech bekämpfen</h3>
+        <div class="card-body">
+          <p><strong>Was ist Hate Speech:</strong> Abwertung einzelner Personen oder Gruppen durch menschenverachtende Aussagen. Richtet sich gegen Eigenschaften wie Herkunft, Religion, Geschlecht, Sexualität, Alter oder Behinderung.</p>
+          <p>Arten: Beleidigungen, Drohungen, Hassposts, Mobbing, Shitstorms und gezielte Angriffe in Kommentaren oder Nachrichten.</p>
+          <p>Schutz & Hilfe: Kommentarfunktionen einschränken, nicht zu viele persönliche Daten teilen, Accounts schützen. Meldung, Blockieren oder Anzeige sind mögliche Schritte.</p>
         </div>
-      </a>
+        <div class="card-actions">
+          <button class="read-more" data-target="card-hate-speech">Mehr lesen</button>
+          <a class="card-link-inline" href="hate-speech.html">Zur Seite →</a>
+        </div>
+      </div>
 
-      <a class="card-link" href="fact-checking.html">
-        <div class="card">
-          <div class="card-icon">🔍</div>
-          <h3>Faktenchecking</h3>
-          <p>Erfahre, wie Faktenchecking funktioniert und welche Ressourcen dir zur Verfügung stehen.</p>
+      <div class="card" id="card-fact-checking">
+        <div class="card-icon">🔍</div>
+        <h3>Faktenchecking</h3>
+        <div class="card-body">
+          <p>Schritte: Quelle & Kontext prüfen, verschiedene Quellen vergleichen, Belege suchen und Bewertung dokumentieren.</p>
+          <p>Nützliche Tools: Rückwärtsbildsuche, Faktencheck-Webseiten und (kritische) KI-Checker. Dokumentiere deine Rechercheschritte und Quellen.</p>
         </div>
-      </a>
-
-      <a class="card-link" href="online-sicherheit.html">
-        <div class="card">
-          <div class="card-icon">🌐</div>
-          <h3>Online-Sicherheit</h3>
-          <p>Schütze dich selbst vor Manipulation und Missbrauch im digitalen Raum.</p>
+        <div class="card-actions">
+          <button class="read-more" data-target="card-fact-checking">Mehr lesen</button>
+          <a class="card-link-inline" href="fact-checking.html">Zur Seite →</a>
         </div>
-      </a>
-
-      <a class="card-link" href="medienkompetenz.html">
-        <div class="card">
-          <div class="card-icon">👥</div>
-          <h3>Medienkompetenz</h3>
-          <p>Entwickle kritisches Denken und verbessere deine Fähigkeiten im Umgang mit Medien.</p>
-        </div>
-      </a>
-
-      <a class="card-link" href="statistiken.html">
-        <div class="card">
-          <div class="card-icon">📊</div>
-          <h3>Statistiken & Fakten</h3>
-          <p>Entdecke aktuelle Daten über Desinformation und deren Auswirkungen auf die Gesellschaft.</p>
-        </div>
-      </a>
+      </div>
+    </div>
     </div>
 
     <!-- Mini-Quiz: True / False -->
@@ -422,6 +470,7 @@
     <p>&copy; 2025 Aufklärung - Fake News und Hate Speech</p>
     <p>Email: ma.gless@web.de | Snapchat: buchsi1501</p>
     <p>Folge uns auf Social Media für aktuelle Informationen</p>
+    <p><a href="impressum.html" style="color:var(--accent); text-decoration:none; font-weight:600;">Impressum</a></p>
   </footer>
   <script>
     // Dark Mode Toggle
@@ -494,6 +543,20 @@
       }
       tipBtn.addEventListener('click', showRandomTip);
       showRandomTip();
+    })();
+
+    // 'Mehr lesen' toggles for cards
+    (function(){
+      const buttons = Array.from(document.querySelectorAll('.read-more'));
+      buttons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const targetId = btn.getAttribute('data-target');
+          const card = document.getElementById(targetId);
+          if(!card) return;
+          const expanded = card.classList.toggle('expanded');
+          btn.textContent = expanded ? 'Weniger' : 'Mehr lesen';
+        });
+      });
     })();
   </script>
 </body>
